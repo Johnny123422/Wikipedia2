@@ -1,10 +1,19 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Wikipedia";
 }
+<h1>Informatii Wikipedia</h1>
+<ul>
+    @foreach (var articol in Model.Articole)
+    {
+        <div class="articol-container">
+            <h2>
+                <a asp-route-stireId="@articol.Id"> @articol.Titlu </a>
+            </h2>
+            <p> <strong> @articol.Continut</strong> Adaugat de <strong>@articol.Autor </strong> din categoria <strong> @articol.Domenii?.Nume</strong></p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        </div>
+        
+    }
+</ul>
