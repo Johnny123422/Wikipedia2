@@ -1,0 +1,21 @@
+﻿@page
+@model Wikipedia.Pages.AdaugaArticolModel
+@{
+    ViewData["Title"] = "AdaugaArticol";
+}
+<form method="post">
+    <div>
+        <label>Titlu </label>
+        <input type="text" asp-for="@Model.articol.Titlu" />
+    </div>
+    <div>
+        <label> Autor </label>
+        <input type="text" asp-for="@Model.articol.Autor" />
+    </div>
+    <div>
+        <label>Continut </label>
+        <input type="text" asp-for="@Model.articol.Continut" />
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
