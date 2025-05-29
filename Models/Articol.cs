@@ -16,6 +16,8 @@
         [ValidateNever]
         public Domeniu? Domenii { get; set; } 
 
+    public int AutorId { get; set; }
+    public Autor Autor { get; set; }
 
-    }
+    public List<Comentariu> Comentarii { get; set; }
 }
