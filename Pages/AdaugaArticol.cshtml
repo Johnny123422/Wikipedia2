@@ -16,6 +16,13 @@
         <label>Continut </label>
         <input type="text" asp-for="@Model.articol.Continut" />
     </div>
+    <div>
+        <label>Domeniu </label>
+        <select asp-for="articol.DomeniuId" asp-items="Model.DomeniiSelectList">
+            <option value="">Selecteaza optiunea</option>
+        </select>
+        
+    </div>
 
     <button type="submit">Submit</button>
 </form>
