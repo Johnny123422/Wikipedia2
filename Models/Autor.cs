@@ -1,6 +1,6 @@
 ﻿namespace Wikipedia.Models
 {
-    public class Domeniu
+    public class Autor
     {
         public int Id { get; set; }
         public string Nume { get; set; }
