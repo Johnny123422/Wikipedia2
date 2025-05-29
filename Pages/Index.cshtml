@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Wikipedia";
 }
-<h1>Informatii Wikipedia</h1>
+<h1 id="Titlu">Informatii Wikipedia</h1>
 <ul>
     @foreach (var articol in Model.Articole)
     {
@@ -11,7 +11,7 @@
             <h2>
                 <a asp-route-stireId="@articol.Id"> @articol.Titlu </a>
             </h2>
-            <p> <strong> @articol.Continut</strong> Adaugat de <strong>@articol.Autor </strong> din categoria <strong> @articol.Domenii?.Nume</strong></p>
+            <p> <strong class="articol-strong"> @articol.Continut</strong> Adaugat de <strong class="articol-strong">@articol.Autor </strong> din categoria <strong class="articol-strong"> @articol.Domenii?.Nume</strong></p>
 
         </div>
         
