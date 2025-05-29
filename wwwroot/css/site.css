@@ -1,22 +1,71 @@
+﻿/* ====================
+   1. Variabile globale
+======================= */
+:root {
+    --primary-color: #422680;
+    --secondary-color: #341671;
+    --hover-color: #280659;
+    --background-color: #660f56;
+    --text-color: #ae2d68;
+    --rose: #ae2d68;
+    --background-color1: #e6f6ff;
+}
+
+/* ====================
+   2. Resetări & fonturi
+======================= */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0;
+    margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    color: var(--primary-color);
+    /* background-color: var(--background-color1); */
+}
+
+/* ====================
+   3. Elemente generale
+======================= */
+a {
+    color: var(--rose);
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* ====================
+   4. Titluri și text
+======================= */
+#Titlu {
+    color: var(--primary-color);
+    text-align: center;
+    border: 1px solid black;
+    margin: 0px;
+    padding:10px;
+}
+
+#header {
+    background-color: var(--rose);
+    
+}
+
+.articol-container {
+    color: var(--primary-color);
+}
+
+.articol-strong {
+    color: var(--secondary-color);
 }
