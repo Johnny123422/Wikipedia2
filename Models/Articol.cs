@@ -15,7 +15,5 @@
 
         [ValidateNever]
         public Domeniu? Domenii { get; set; }
-
-
     }
 }
