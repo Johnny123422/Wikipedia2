@@ -11,7 +11,7 @@ namespace Wikipedia.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly AppDbContext _context;
-        public Articol[] Articole { get; set; } = Array.Empty<Articol>();
+         public Articol[] Articole { get; set; } = Array.Empty<Articol>();
 
         public IndexModel(ILogger<IndexModel> logger, AppDbContext appDbContext)
         {
@@ -21,7 +21,7 @@ namespace Wikipedia.Pages
 
         public void OnGet()
         {
-            Articole = _context.Articole.Include(s => s.Domenii).ToArray();
+           Articole = _context.Articole.Include(s => s.Domenii).ToArray();
 
         }
     }

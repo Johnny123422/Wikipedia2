@@ -1,0 +1,15 @@
+﻿@page "{id:int}"
+@model Wikipedia.Pages.DomeniuPageModel
+@{
+    ViewData["Title"] = "DomeniuPage " + Model.DomeniuName;
+}
+<h1>Articole din categoria @Model.DomeniuName</h1>
+<ul>
+@foreach(var articol in Model.Articole)
+{
+    <div>
+        <p><strong> @articol.Titlu</strong></p>
+        <p>@articol.Continut</p>
+    </div>
+}
+</ul>
