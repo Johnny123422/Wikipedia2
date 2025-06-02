@@ -13,9 +13,10 @@
             </h2>
             <p> <strong> @articol.Continut</strong> Adaugat de <strong>@articol.Autor </strong> din categoria <strong> @articol.Domenii?.Nume</strong></p>
             <a asp-page="/EditeazaArticol" asp-route-Id="@articol.Id" >Editeaza Articol</a>
-        </div>
-        
+            <p> <strong> @articol.Continut</strong> Adaugat de <strong>@articol.Autor </strong> din categoria 
+                <a asp-page="/DomeniuPage" asp-route-id="@articol.DomeniuId">@articol.Domenii?.Nume</a></p>
 
+        </div>
     }
 </ul>
 <div>
