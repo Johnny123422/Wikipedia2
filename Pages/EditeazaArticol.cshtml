@@ -1,0 +1,28 @@
+﻿@page
+@model Wikipedia.Pages.Shared.EditeazaArticolModel
+@{
+    ViewData["Title"] = "Editeaza Articol";
+}
+
+<h2>Editeaza stirea</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="@Model.Articol.Id" />
+
+    <div>
+        <input asp-for="@Model.Articol.Titlu" />
+    </div>
+
+    <div>
+        <input asp-for="@Model.Articol.Continut" />
+    </div>
+
+    <div>
+        <input asp-for="@Model.Articol.Autor" />
+    </div>
+
+    <div>
+        <input asp-for="@Model.Articol.DataPublicare" type="date" />
+
+        <button type="submit">Salveaza modificarile</button>
+</form>

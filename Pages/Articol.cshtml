@@ -1,0 +1,16 @@
+﻿@page "[articolId int]"
+@model Wikipedia.Pages.ArticolModel
+@{
+    ViewData["Title"] = "Wikipedia";
+   <section>
+    <div class="articol-container">
+        <h2>
+            <a asp-page="/Articol" asp-route-articolId="@Model.Articol.Id"> @Model.Articol.Titlu </a>
+        </h2>
+        <p> <strong> @Model.Articol.Continut</strong> Adaugat de <strong>@Model.Articol.Autor </strong> din categoria <strong> @Model.Articol.Domenii?.Nume</strong></p>
+       
+    </div>
+    </section>
+
+}
+

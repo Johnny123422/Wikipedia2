@@ -9,7 +9,7 @@ namespace Wikipedia.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Autor> Autori { get; set; }
+       
         public DbSet<Domeniu> Domenii { get; set; }
         public DbSet<Articol> Articole { get; set; }
 
