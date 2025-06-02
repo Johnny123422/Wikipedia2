@@ -15,5 +15,7 @@
 
         [ValidateNever]
         public Domeniu? Domenii { get; set; }
+
+        public bool EsteProtejat { get; set; } = false;
     }
 }

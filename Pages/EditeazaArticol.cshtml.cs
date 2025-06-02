@@ -7,7 +7,6 @@ namespace Wikipedia.Pages.Shared
 {
     public class EditeazaArticolModel : PageModel
     {
-
         private readonly AppDbContext _context;
 
         [BindProperty]
@@ -30,6 +29,7 @@ namespace Wikipedia.Pages.Shared
         }
         public IActionResult OnPost()
         {
+            
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -41,7 +41,12 @@ namespace Wikipedia.Pages.Shared
             {
                 return NotFound();
             }
-            
+
+            if (articolExistent.EsteProtejat && !User.IsInRole("moderator") && !User.IsInRole("admin") && !User.IsInRole("userInregistrat"))
+            {
+                return Forbid();
+            }
+
             articolExistent.Titlu = Articol.Titlu;
             articolExistent.Continut = Articol.Continut;
             articolExistent.Autor = Articol.Autor;
