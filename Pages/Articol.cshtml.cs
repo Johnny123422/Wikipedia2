@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,27 @@ namespace Wikipedia.Pages
                 return RedirectToPage("/Error");
             }
             return Page();
+        }
+
+        [Authorize(Roles ="moderator")]
+        public async Task<IActionResult> OnPostProtejeazaAsync(int id)
+        {
+            var articolProtejat = await _context.Articole.FindAsync(id);
+
+            if(articolProtejat == null)
+            {
+                return NotFound();
+            }
+
+            if (!User.Identity.IsAuthenticated || !User.IsInRole("moderator"))
+            {
+                return Forbid();
+            }
+
+            articolProtejat.EsteProtejat = true;
+            await _context.SaveChangesAsync();
+            return RedirectToPage("Index");
+
         }
     }
 }

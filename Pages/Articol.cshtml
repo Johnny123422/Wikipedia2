@@ -1,4 +1,4 @@
-﻿@page "[articolId int]"
+﻿@page "{articolId:int}"
 @model Wikipedia.Pages.ArticolModel
 @{
     ViewData["Title"] = "Wikipedia";
@@ -11,6 +11,9 @@
        
     </div>
     </section>
+    <form method="post" asp-page-handler="Protejeaza" asp-route-id="@Model.Articol.Id">
+        <button type="submit">Nu permite editarea</button>
+    </form>
 
 }
 
