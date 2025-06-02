@@ -7,21 +7,54 @@
 <ul>
     @foreach (var articol in Model.Articole)
     {
-        <div class="articol-container">
-            <h2>
-                <a asp-page="/Articol" asp-route-articolId="@articol.Id"> @articol.Titlu </a>
-            </h2>
-            <p> <strong> @articol.Continut</strong> Adaugat de <strong>@articol.Autor </strong> din categoria <strong> @articol.Domenii?.Nume</strong></p>
-            <a asp-page="/EditeazaArticol" asp-route-Id="@articol.Id" >Editeaza Articol</a>
-            <p> <strong> @articol.Continut</strong> Adaugat de <strong>@articol.Autor </strong> din categoria 
-                <a asp-page="/DomeniuPage" asp-route-id="@articol.DomeniuId">@articol.Domenii?.Nume</a></p>
+        <section id="Articol">
+            <div class="articol-container">
+                @if (!string.IsNullOrEmpty(articol.Imagine))
+                {
+                              <div class="articol-imagine">
+                                    <img src="@Url.Content($"~/imagine/{articol.Imagine}")" alt="Imagine articol" />
+                               </div>
+                }
+                else
+                {
+                        <div class="articol-imagine">
+                           <img src="@Url.Content("~/imagine/no_image.jpg")" alt="Imagine articol" />
+                        </div>
+                }
+                <div class="articol-informatii">
+                         <div class="linie">
+                            <div class="linie-verticala"></div>
 
-        </div>
+                    <div id="inceput-articol"> 
+                        <a asp-page="/DomeniuPage" asp-route-id="@articol.DomeniuId">@articol.Domenii?.Nume</a>
+                        </div>
+
+                    </div>
+
+
+                        <h2>
+                        <a asp-page="/Articol" asp-route-articolId="@articol.Id"> @articol.Titlu </a>
+                        </h2>
+
+                    <p>  @articol.Continut </p>
+                         <div id="editare">
+                    <a asp-page="/EditeazaArticol" asp-route-Id="@articol.Id">Editeaza Articol</a>
+                   </div>
+                </div>
+                   
+               
+            </div>
+
+
+
+        </section>
     }
 </ul>
 <div>
+   
     <p>Adauga articol nou: </p>
     <a asp-page="/AdaugaArticol">Adauga Articol</a>
+       
 
     
 </div>
