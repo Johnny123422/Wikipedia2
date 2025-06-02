@@ -49,7 +49,8 @@ namespace Wikipedia.Pages
             }
             _context.Articole.Add(articol);
             _context.SaveChanges();
-            return RedirectToPage("Index");
+            return RedirectToPage();
         }
+
     }
 }
