@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/css/layout.csss" asp-append-version="true" />
     <link rel="stylesheet" href="~/Wikipedia.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Wiki.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -31,6 +32,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/AdminRoleManegment">Gestionare Roluri</a>
                         </li>
+
+                        <li class="nav-item">
+                            <i id="cautare-articol" class="fa-solid fa-magnifying-glass" style="cursor:pointer; color: #ffffff;"></i>
+                            <input type="text" id="input-cautare" placeholder="Caută articol..." style="display:none; margin-left:10px;" />
+                        </li>
+
+
                     </ul>
                     <partial name="_LoginPartial"></partial>
                 </div>
