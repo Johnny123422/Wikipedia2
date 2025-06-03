@@ -16,19 +16,10 @@
             <select name="rol">
                <option value ="admin">Administrator</option>
                <option value="moderator">Moderator</option>
-                    <option value="userInregistrat">User Inregistrat</option>
+               <option value="userInregistrat">User Inregistrat</option>
             </select>
-            <button type="submit">Promoveaza rol</button>
+            <button type="submit">Actualizeaza rol</button>
         </form>
-            <form method="post" asp-page-handler="RemoveRole" style="margin-top: 10px;">
-                <input type="hidden" name="userId" value="@user.Id" />
-                <select name="rol">
-                    <option value="admin">Administrator</option>
-                    <option value="moderator">Moderator</option>
-                    <option value="userInregistrat">User Inregistrat</option>
-                </select>
-                <button type="submit">Revoca rol</button>
-            </form>
         </div>
 }
 </ul>
