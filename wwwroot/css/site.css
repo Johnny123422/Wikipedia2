@@ -173,46 +173,7 @@ h2 {
     margin-top: 40px;
     text-align: center;
 }
-}
 
-/* ====================
-   Motor de cautare
-======================= */
-.search-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 1rem 0;
-    max-width: 600px;
-    margin-inline: auto;
-}
 
-.search-input {
-    flex: 1;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 25px;
-    transition: border-color 0.3s ease;
-}
 
-    .search-input:focus {
-        border-color: #007bff;
-        outline: none;
-    }
 
-.search-button {
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-    .search-button:hover {
-        background-color: #0056b3;
-    }

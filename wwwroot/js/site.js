@@ -3,19 +3,21 @@
 
 // Write your JavaScript code.
 
-document.getElementById("cautare-articol").addEventListener("input", function () {
+document.getElementById("cautare-articol").addEventListener("click", function () {
+    let input = document.getElementById("input-cautare");
+    input.style.display = "inline-block";
+    input.focus(); 
+});
+
+document.getElementById("input-cautare").addEventListener("input", function () {
     let termen = this.value.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, '');
 
     let articole = document.querySelectorAll(".articol-container");
 
     articole.forEach(function (produs) {
-        let valNume = produs.querySelector(".val-nume").innerHTML
+        let valNume = produs.querySelector(".val-nume").innerText
             .toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, '');
 
-        if (valNume.includes(termen)) {
-            produs.parentElement.style.display = ""; // afișează articolul
-        } else {
-            produs.parentElement.style.display = "none"; // ascunde articolul
-        }
+        produs.parentElement.style.display = valNume.includes(termen) ? "" : "none";
     });
 });
