@@ -1,19 +1,85 @@
 ﻿@page "{articolId:int}"
+@using Wikipedia.Models
 @model Wikipedia.Pages.ArticolModel
 @{
     ViewData["Title"] = "Wikipedia";
+    @functions {
+        string TimpTrecut(DateTime data)
+        {
+            var diferenta = DateTime.Now - data;
+
+            if (diferenta.TotalSeconds < 60)
+                return "PUBLICAT acum câteva secunde";
+            else if (diferenta.TotalMinutes < 60)
+                return $"PUBLICAT acum {(int)diferenta.TotalMinutes} minute";
+            else if (diferenta.TotalHours < 24)
+                return $"PUBLICAT acum {(int)diferenta.TotalHours} ore";
+            else if (diferenta.TotalDays < 30)
+                return $"PUBLICAT acum {(int)diferenta.TotalDays} zile";
+            else if (diferenta.TotalDays < 365)
+                return $"PUBLICAT acum {(int)(diferenta.TotalDays / 30)} luni";
+            else
+                return $"PUBLICAT acum {(int)(diferenta.TotalDays / 365)} ani";
+        }
+        }
+    
+   
    <section id="Articol_singur">
-    <div class="articol-container">
-        <h2>
-                <strong>@Model.Articol.Titlu </strong>
-        </h2>
-        <p> <strong> @Model.Articol.Continut</strong> Adaugat de <strong>@Model.Articol.Autor </strong> din categoria <strong> @Model.Articol.Domenii?.Nume</strong></p>
-       
-    </div>
-    </section>
-    <form method="post" asp-page-handler="Protejeaza" asp-route-id="@Model.Articol.Id">
-        <button type="submit">Nu permite editarea</button>
-    </form>
+
+            <div class="articol-container">
+                @if (!string.IsNullOrEmpty(@Model.Articol.Imagine))
+                {
+                    <div class="articol-imagine">
+                        <img src="@Url.Content($"~/imagine/{@Model.Articol.Imagine}")" alt="Imagine articol" />
+                        <div class="Data_articol">
+                            <p><i>@TimpTrecut(@Model.Articol.DataPublicare)</i></p>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="articol-imagine">
+                        <img src="@Url.Content("~/imagine/no_image.jpg")" alt="Imagine articol" />
+                        <div class="Data_articol">
+                            <p><i>@TimpTrecut(@Model.Articol.DataPublicare)</i></p>
+
+                        </div>
+                    </div>
+                }
+                <div class="articol-informatii">
+                    <div class="linie">
+                        <div class="linie-verticala"></div>
+
+                        <div id="inceput-articol">
+                            <a asp-page="/DomeniuPage" asp-route-id="@Model.Articol.DomeniuId">@Model.Articol.Domenii?.Nume</a>
+                        </div>
+
+                    </div>
+
+
+                    <h2 class="val-nume">
+                        <a asp-page="/Articol" asp-route-articolId="@Model.Articol.Id"> @Model.Articol.Titlu </a>
+                    </h2>
+
+                    <p>  @Model.Articol.Continut </p>
+
+
+
+
+
+
+                    <div id="editare">
+                        <a asp-page="/EditeazaArticol" asp-route-Id="@Model.Articol.Id">Editeaza Articol</a>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </section>
 
 }
 

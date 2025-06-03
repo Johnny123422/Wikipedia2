@@ -3,13 +3,70 @@
 @{
     ViewData["Title"] = "DomeniuPage " + Model.DomeniuName;
 }
-<h1>Articole din categoria @Model.DomeniuName</h1>
-<ul>
-@foreach(var articol in Model.Articole)
-{
-    <div>
-        <p><strong> @articol.Titlu</strong></p>
-        <p>@articol.Continut</p>
-    </div>
+@functions {
+    string TimpTrecut(DateTime data)
+    {
+        var diferenta = DateTime.Now - data;
+
+        if (diferenta.TotalSeconds < 60)
+            return "PUBLICAT acum câteva secunde";
+        else if (diferenta.TotalMinutes < 60)
+            return $"PUBLICAT acum {(int)diferenta.TotalMinutes} minute";
+        else if (diferenta.TotalHours < 24)
+            return $"PUBLICAT acum {(int)diferenta.TotalHours} ore";
+        else if (diferenta.TotalDays < 30)
+            return $"PUBLICAT acum {(int)diferenta.TotalDays} zile";
+        else if (diferenta.TotalDays < 365)
+            return $"PUBLICAT acum {(int)(diferenta.TotalDays / 30)} luni";
+        else
+            return $"PUBLICAT acum {(int)(diferenta.TotalDays / 365)} ani";
+    }
 }
-</ul>
+<h1>Articole din categoria @Model.DomeniuName</h1>
+
+@foreach (var articol in Model.Articole.OrderByDescending(s => s.DataPublicare))
+{
+    <section id="Articol">
+        
+            <div class="articol-container">
+                @if (!string.IsNullOrEmpty(articol.Imagine))
+                {
+                              <div class="articol-imagine">
+                                    <img src="@Url.Content($"~/imagine/{articol.Imagine}")" alt="Imagine articol" />
+                        <div class="Data_articol">
+                            <p><i>@TimpTrecut(@articol.DataPublicare)</i></p>
+
+                        </div>
+                               </div>
+                }
+                else
+                {
+                        <div class="articol-imagine">
+                           <img src="@Url.Content("~/imagine/no_image.jpg")" alt="Imagine articol" />
+                        <div class="Data_articol">
+                            <p><i>@TimpTrecut(@articol.DataPublicare)</i></p>
+
+                        </div>
+                        </div>
+                }
+                <div class="articol-informatii">
+                         <div class="linie">
+                            <div class="linie-verticala"></div>
+
+                    <div id="inceput-articol"> 
+                        <p>@articol.Domenii?.Nume</p>
+                        </div>
+
+                    </div>
+
+
+                        <h2 class="val-nume">
+                        <a asp-page="/Articol" asp-route-articolId="@articol.Id"> @articol.Titlu </a>
+                        </h2>
+
+                    <p>  @articol.Continut </p>
+                   
+                
+
+</section>
+}
