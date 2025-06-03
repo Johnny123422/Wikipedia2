@@ -183,6 +183,14 @@ h2 {
     font-size: 16px;
 }
 
+    .nav-item > #input-cautare {
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        border-radius: 50px;
+        border: none;
+        width: 500px;
+    }
+
 
 
 
