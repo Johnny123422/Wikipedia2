@@ -116,6 +116,10 @@ h2 {
     margin-right: 10px;
 }
 
+.articol-imagine {
+    position: relative;
+    display: inline-block;
+}
 .articol-imagine img {
     width: 400px;
     height: 300px;
@@ -133,3 +137,79 @@ h2 {
 .articol-informatii {
     flex:1;
 }
+
+.Data_articol {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    text-align: left;
+    color: white;
+}
+
+
+.grid-pagina {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "Articol Articol";
+}
+
+    .grid-pagina > section {
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+.adauga-articol {
+    margin-top: 40px;
+    text-align: center;
+}
+}
+
+/* ====================
+   Motor de cautare
+======================= */
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    transition: border-color 0.3s ease;
+}
+
+    .search-input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+.search-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .search-button:hover {
+        background-color: #0056b3;
+    }

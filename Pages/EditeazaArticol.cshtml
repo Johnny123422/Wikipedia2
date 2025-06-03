@@ -23,11 +23,8 @@
 
     <label>Imagine:</label>
     <input type="file" name="ImagineNoua" />
-
-    <div>
-        <input asp-for="@Model.Articol.DataPublicare" type="date" />
-
-        <button type="submit">Salveaza modificarile</button>
+    
+    <button type="submit">Salveaza modificarile</button>
 </form>
 <div>
     <input asp-for="Articol.EsteProtejat" type="checkbox" disabled />

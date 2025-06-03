@@ -3,22 +3,61 @@
 @{
     ViewData["Title"] = "Wikipedia";
 }
+ @functions {
+                string TimpTrecut(DateTime data)
+                    {
+                    var diferenta = DateTime.Now - data;
+
+                    if (diferenta.TotalSeconds < 60)
+                        return "acum câteva secunde";
+                    else if (diferenta.TotalMinutes < 60)
+                        return $"acum {(int)diferenta.TotalMinutes} minute";
+                    else if (diferenta.TotalHours < 24)
+                        return $"acum {(int)diferenta.TotalHours} ore";
+                    else if (diferenta.TotalDays < 30)
+                        return $"acum {(int)diferenta.TotalDays} zile";
+                    else if (diferenta.TotalDays < 365)
+                         return $"acum {(int)(diferenta.TotalDays / 30)} luni";
+                    else
+                         return $"acum {(int)(diferenta.TotalDays / 365)} ani";
+                    }
+            }
+
+
 <h1 id="Titlu">Informatii Wikipedia</h1>
+<form asp-controller="Articles" asp-action="Search" method="get" class="search-form">
+    <input type="text" name="query" class="search-input" placeholder="Caută articole..." />
+    <button type="submit" class="search-button">Caută</button>
+</form>
+
 <ul>
     @foreach (var articol in Model.Articole)
+<div class="grid-pagina">
+
+       
+        @foreach (var articol in Model.Articole)
     {
-        <section id="Articol">
+            <section id="Articol">
+        
             <div class="articol-container">
                 @if (!string.IsNullOrEmpty(articol.Imagine))
                 {
                               <div class="articol-imagine">
                                     <img src="@Url.Content($"~/imagine/{articol.Imagine}")" alt="Imagine articol" />
+                        <div class="Data_articol">
+                            <p><i>@TimpTrecut(@articol.DataPublicare)</i></p>
+
+                        </div>
                                </div>
                 }
                 else
                 {
                         <div class="articol-imagine">
                            <img src="@Url.Content("~/imagine/no_image.jpg")" alt="Imagine articol" />
+                        <div class="Data_articol">
+                            <p><i>@TimpTrecut(@articol.DataPublicare)</i></p>
+
+                        </div>
                         </div>
                 }
                 <div class="articol-informatii">
@@ -37,24 +76,35 @@
                         </h2>
 
                     <p>  @articol.Continut </p>
+                   
+                
+
+
+
+                    
                          <div id="editare">
                     <a asp-page="/EditeazaArticol" asp-route-Id="@articol.Id">Editeaza Articol</a>
                    </div>
+               
+
                 </div>
+           
                    
                
             </div>
-
-
-
-        </section>
+            </section>
     }
-</ul>
-<div>
-   
-    <p>Adauga articol nou: </p>
-    <a asp-page="/AdaugaArticol">Adauga Articol</a>
        
 
-    
+<div>
+
+       
+       
+
+    </div>
+</div>
+
+<div class="adauga-articol">
+    <p>Adauga articol nou:</p>
+    <a asp-page="/AdaugaArticol">Adauga Articol</a>
 </div>
