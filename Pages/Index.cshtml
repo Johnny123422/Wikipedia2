@@ -36,17 +36,21 @@
                 @if (!string.IsNullOrEmpty(articol.Imagine))
                 {
                               <div class="articol-imagine">
-                                    <img src="@Url.Content($"~/imagine/{articol.Imagine}")" alt="Imagine articol" />
+                                  <a asp-page="/Articol" asp-route-articolId="@articol.Id">
+                            <img src="@Url.Content($"~/imagine/{articol.Imagine}")" alt="Imagine articol" />
+                        </a>
                         <div class="Data_articol">
                             <p><i>@TimpTrecut(@articol.DataPublicare)</i></p>
 
                         </div>
-                               </div>
+                               </div> 
                 }
                 else
                 {
                         <div class="articol-imagine">
-                           <img src="@Url.Content("~/imagine/no_image.jpg")" alt="Imagine articol" />
+                        <a asp-page="/Articol" asp-route-articolId="@articol.Id">
+                            <img src="@Url.Content($"~/imagine/{articol.Imagine}")" alt="Imagine articol" />
+                        </a>
                         <div class="Data_articol">
                             <p><i>@TimpTrecut(@articol.DataPublicare)</i></p>
 
@@ -65,10 +69,18 @@
 
 
                         <h2 class="val-nume">
-                        <a asp-page="/Articol" asp-route-articolId="@articol.Id"> @articol.Titlu </a>
+
+                         @articol.Titlu
                         </h2>
 
-                    <p>  @articol.Continut </p>
+                    
+                        @((articol.Continut.Length > 100)
+                            ? articol.Continut.Substring(0, 100) 
+                            : articol.Continut)
+
+                        <a asp-page="/Articol" asp-route-articolId="@articol.Id">...Citeste mai mult</a>
+                   
+                    
                    
                 
 
