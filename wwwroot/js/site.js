@@ -9,6 +9,17 @@ document.getElementById("cautare-articol").addEventListener("click", function ()
     input.focus(); 
 });
 
+document.getElementById("cautare-articol").addEventListener("click", function () {
+    let input = document.getElementById("input-cautare");
+    input.style.display = "inline-block";
+    input.focus();
+});
+
+
+
+
+
+
 document.getElementById("input-cautare").addEventListener("input", function () {
     let termen = this.value.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, '');
 
