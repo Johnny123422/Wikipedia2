@@ -55,7 +55,7 @@ namespace Wikipedia.Pages.Shared
             articolExistent.Titlu = Articol.Titlu;
             articolExistent.Continut = Articol.Continut;
             articolExistent.Autor = Articol.Autor;
-            articolExistent.DataPublicare = Articol.DataPublicare;
+            articolExistent.DataPublicare = DateTime.Now;
             articolExistent.Domenii = Articol.Domenii;
 
             // Verifică dacă s-a selectat o imagine nouă
