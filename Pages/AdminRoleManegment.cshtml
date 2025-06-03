@@ -7,7 +7,10 @@
 <ul>
 @foreach(var user in Model.Useri)
 {
-    <div>
+        <div style="margin-bottom: 20px; padding:10px; border:1px solid #ccc;">
+            <strong>@user.Nume</strong> - @user.Email <br />
+            ID: @user.Id
+
         <form method="post" asp-page-handler="AddRol">
             <input type="hidden" name="userId" value="@user.Id" />
             <select name="rol">
