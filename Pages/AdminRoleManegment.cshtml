@@ -1,0 +1,31 @@
+﻿@page
+@model Wikipedia.Pages.AdminRoleManegmentModel
+@{
+    ViewData["Title"] = "GestionareRoluri";
+}
+<h2>Utilizatori</h2>
+<ul>
+@foreach(var user in Model.Useri)
+{
+    <div>
+        <form method="post" asp-page-handler="AddRol">
+            <input type="hidden" name="userId" value="@user.Id" />
+            <select name="rol">
+               <option value ="admin">Administrator</option>
+               <option value="moderator">Moderator</option>
+                    <option value="userInregistrat">User Inregistrat</option>
+            </select>
+            <button type="submit">Promoveaza rol</button>
+        </form>
+            <form method="post" asp-page-handler="RemoveRole" style="margin-top: 10px;">
+                <input type="hidden" name="userId" value="@user.Id" />
+                <select name="rol">
+                    <option value="admin">Administrator</option>
+                    <option value="moderator">Moderator</option>
+                    <option value="userInregistrat">User Inregistrat</option>
+                </select>
+                <button type="submit">Revoca rol</button>
+            </form>
+        </div>
+}
+</ul>
