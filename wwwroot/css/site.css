@@ -33,6 +33,7 @@ html {
 
 body {
     margin: 0;
+    padding-top: 70px;
     margin-bottom: 60px;
     font-family: Arial, sans-serif;
     color: var(--primary-color);
@@ -57,19 +58,21 @@ a {
 #Titlu {
     color: var(--primary-color);
     text-align: center;
-    border: 1px solid black;
     margin: 10px;
     padding:10px;
 }
 
-#header {
+.custom-navbar {
     background-color: var(--rose);
+    color: white;
+    border: 10px;
     
 }
 
 .articol-container {
     color: var(--primary-color);
 }
+
 
 .articol-strong {
     color: var(--secondary-color);
