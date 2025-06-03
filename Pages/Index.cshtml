@@ -70,7 +70,9 @@
 
                         <h2 class="val-nume">
 
-                         @articol.Titlu
+                        @((articol.Titlu.Length > 10)
+                            ? articol.Titlu.Substring(0, 10)+ "..."
+                            : articol.Titlu)
                         </h2>
 
                     
