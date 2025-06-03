@@ -284,6 +284,9 @@ namespace Wikipedia.Migrations
                     b.Property<bool>("EsteProtejat")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Imagine")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Titlu")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

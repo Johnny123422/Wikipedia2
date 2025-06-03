@@ -1,2 +1,22 @@
-﻿body {
+﻿
+:root {
+    --background-color: #e6f6ff;
+    --border-radius: 10px;
+    --padding: 20px;
 }
+
+
+#grid-pagina {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "articol-imagine Articol Articol";
+}
+
+    #grid-pagina > * {
+        border-radius: var(--border-radius);
+        padding: var(--padding);
+        background-color: var(--background-color);
+        color: white;
+    }

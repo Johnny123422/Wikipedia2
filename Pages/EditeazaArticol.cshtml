@@ -6,7 +6,7 @@
 
 <h2>Editeaza stirea</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Articol.Id" />
 
     <div>
@@ -20,6 +20,9 @@
     <div>
         <input asp-for="@Model.Articol.Autor" />
     </div>
+
+    <label>Imagine:</label>
+    <input type="file" name="ImagineNoua" />
 
     <div>
         <input asp-for="@Model.Articol.DataPublicare" type="date" />

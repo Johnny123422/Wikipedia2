@@ -27,30 +27,37 @@ namespace Wikipedia.Pages
                     Text = d.Nume
                 }).ToList();
         }
-
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync(IFormFile ImagineFisier)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                foreach (var error in errors)
-                {
-                    Console.WriteLine("EROARE MODELSTATE: " + error.ErrorMessage);
-                }
-
                 DomeniiSelectList = _context.Domenii
-                .Select(d => new SelectListItem
-                {
-                    Value = d.Id.ToString(),
-                    Text = d.Nume
-                }).ToList();
+                    .Select(d => new SelectListItem
+                    {
+                        Value = d.Id.ToString(),
+                        Text = d.Nume
+                    }).ToList();
 
                 return Page();
             }
+
+            if (ImagineFisier != null && ImagineFisier.Length > 0)
+            {
+                var fileName = Path.GetFileName(ImagineFisier.FileName);
+                articol.Imagine = fileName;
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagine", fileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await ImagineFisier.CopyToAsync(stream);
+                }
+            }
+
             _context.Articole.Add(articol);
-            _context.SaveChanges();
-            return RedirectToPage();
+            await _context.SaveChangesAsync();
+            return RedirectToPage("/Index");
         }
+
 
     }
 }

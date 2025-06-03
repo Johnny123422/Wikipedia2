@@ -13,6 +13,8 @@
 
         public int DomeniuId { get; set; }
 
+        public string? Imagine { get; set; }
+
         [ValidateNever]
         public Domeniu? Domenii { get; set; }
 

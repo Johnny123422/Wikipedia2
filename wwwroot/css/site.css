@@ -9,13 +9,18 @@
     --text-color: #ae2d68;
     --rose: #ae2d68;
     --background-color1: #e6f6ff;
+
+    --linie-culoare: black;
+    --linie-latime: 4px;
+    --linie-inaltime: 14px;
+    --linie-spatiu: 6px;
 }
 
 /* ====================
    2. Resetări & fonturi
 ======================= */
 html {
-    font-size: 14px;
+    font-size: 18px;
     position: relative;
     min-height: 100%;
 }
@@ -53,7 +58,7 @@ a {
     color: var(--primary-color);
     text-align: center;
     border: 1px solid black;
-    margin: 0px;
+    margin: 10px;
     padding:10px;
 }
 
@@ -68,4 +73,63 @@ a {
 
 .articol-strong {
     color: var(--secondary-color);
+}
+
+
+
+
+p { 
+    padding:0px;
+
+    margin: 0px;
+
+}
+
+br {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+#inceput-articol {
+    margin: 0;
+    padding: 0;
+}
+
+#editare {
+    padding-bottom: 10px;
+}
+
+.linie {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.linie-verticala {
+    height: var(--linie-inaltime);
+    width: var(--linie-latime);
+    background-color: var(--text-color);
+    margin-right: 10px;
+}
+
+.articol-imagine img {
+    width: 400px;
+    height: 300px;
+    border-radius: 4px;
+    
+}
+
+.articol-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.articol-informatii {
+    flex:1;
 }
