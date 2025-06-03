@@ -25,9 +25,14 @@ html {
     min-height: 100%;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     html {
-        font-size: 16px;
+        font-size: 12px;
+    }
+    #grid-pagina {
+        
+        grid-template-columns: 1fr; 
+        gap: 6px;
     }
 }
 
@@ -44,12 +49,14 @@ body {
    3. Elemente generale
 ======================= */
 a {
-    color: var(--rose);
     text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+    color: black;
 }
 
     a:hover {
-        text-decoration: underline;
+        color: var(--rose);
     }
 
 /* ====================
@@ -194,8 +201,43 @@ h2 {
         border-radius: 50px;
         border: none;
         width: 500px;
+        text-decoration: underline;
     }
 
 
+.btn-primary {
+    background-color: var(--rose) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--rose) !important;
+}
+
+main{
+    display:flex;
+    margin-bottom:200px;
+    padding-bottom: 100px;
+}
 
 
+.footer {
+    background-color: var(--rose);
+    color: #fff;
+    padding-top: 10px;
+   text-align: center;
+   width: 100%;
+   height: auto;
+   
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #fff;
+    }

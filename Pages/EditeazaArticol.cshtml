@@ -10,19 +10,23 @@
     <input type="hidden" asp-for="@Model.Articol.Id" />
 
     <div class="mb-3">
-        <input asp-for="@Model.Articol.Titlu" />
+        <label class="form-label">Titlu</label>
+        <input class="form-control" asp-for=" @Model.Articol.Titlu" />
     </div>
 
     <div class="mb-3">
-        <input asp-for="@Model.Articol.Continut" />
+        <label class="form-label">Continut</label>
+        <input class="form-control" asp-for="@Model.Articol.Continut" />
     </div>
 
     <div class="mb-3">
-        <input asp-for="@Model.Articol.Autor" />
+        <label class="form-label">Autor</label>
+        <input class="form-control" asp-for=" @Model.Articol.Autor" />
     </div>
-
+    <div class="mb-3">
     <label class="form-label">Imagine:</label>
     <input type="file" class="form-control" name="ImagineNoua" />
+    </div>
     
     <button type="submit" class="w-20 btn btn-lg btn-primary">Submit</button>
 </form>

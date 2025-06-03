@@ -5,16 +5,15 @@
 }
 <form method="post" enctype="multipart/form-data">
     <div class="mb-3">
-        <label class="form-label">Titlu </label>
-        <input class="form-control" type="text" asp-for="@Model.articol.Titlu" />
+        
+        <input class="form-control" type="text" asp-for="@Model.articol.Titlu" placeholder="Titlu" />
     </div class="mb-3">
     <div class="mb-3">
-        <label class="form-label"> Autor </label>
-        <input class="form-control" type="text" asp-for="@Model.articol.Autor" />
+       
+        <input class="form-control" type="text" asp-for="@Model.articol.Autor" placeholder="Autor" />
     </div>
     <div class="mb-3">
-        <label class="form-label">Continut </label>
-        <input class="form-control" type="text" asp-for="@Model.articol.Continut" />
+        <input class="form-control" type="text" asp-for="@Model.articol.Continut" placeholder="Continut" />
     </div>
 
     <label class="form-label">Imagine:</label>
