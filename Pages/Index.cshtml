@@ -9,31 +9,30 @@
                     var diferenta = DateTime.Now - data;
 
                     if (diferenta.TotalSeconds < 60)
-                        return "acum câteva secunde";
+                        return "PUBLICAT acum câteva secunde";
                     else if (diferenta.TotalMinutes < 60)
-                        return $"acum {(int)diferenta.TotalMinutes} minute";
+                        return $"PUBLICAT acum {(int)diferenta.TotalMinutes} minute";
                     else if (diferenta.TotalHours < 24)
-                        return $"acum {(int)diferenta.TotalHours} ore";
+                        return $"PUBLICAT acum {(int)diferenta.TotalHours} ore";
                     else if (diferenta.TotalDays < 30)
-                        return $"acum {(int)diferenta.TotalDays} zile";
+                        return $"PUBLICAT acum {(int)diferenta.TotalDays} zile";
                     else if (diferenta.TotalDays < 365)
-                         return $"acum {(int)(diferenta.TotalDays / 30)} luni";
+                         return $"PUBLICAT acum {(int)(diferenta.TotalDays / 30)} luni";
                     else
-                         return $"acum {(int)(diferenta.TotalDays / 365)} ani";
+                         return $"PUBLICAT acum {(int)(diferenta.TotalDays / 365)} ani";
                     }
             }
 
 
 <h1 id="Titlu">Informatii Wikipedia</h1>
 <form asp-controller="Articles" asp-action="Search" method="get" class="search-form">
-    <input type="text" name="query" class="search-input" placeholder="Caută articole..." />
-    <button type="submit" class="search-button">Caută</button>
+    <input type="text" name="query" id="cautare-articol" class="search-input" placeholder="Caută articole..." />
 </form>
 
 
 <div class="grid-pagina">
-       
-        @foreach (var articol in Model.Articole)
+
+    @foreach (var articol in Model.Articole.OrderByDescending(a => a.DataPublicare))
     {
             <section id="Articol">
         
@@ -69,7 +68,7 @@
                     </div>
 
 
-                        <h2>
+                        <h2 class="val-nume">
                         <a asp-page="/Articol" asp-route-articolId="@articol.Id"> @articol.Titlu </a>
                         </h2>
 
