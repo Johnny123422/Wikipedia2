@@ -4,6 +4,11 @@
     ViewData["Title"] = "Wikipedia";
 }
 <h1 id="Titlu">Informatii Wikipedia</h1>
+<form asp-controller="Articles" asp-action="Search" method="get" class="search-form">
+    <input type="text" name="query" class="search-input" placeholder="Caută articole..." />
+    <button type="submit" class="search-button">Caută</button>
+</form>
+
 <ul>
     @foreach (var articol in Model.Articole)
     {
