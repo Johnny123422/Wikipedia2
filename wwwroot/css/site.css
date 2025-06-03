@@ -20,7 +20,7 @@
    2. Resetări & fonturi
 ======================= */
 html {
-    font-size: 14px;
+    font-size: 18px;
     position: relative;
     min-height: 100%;
 }
@@ -117,8 +117,8 @@ h2 {
 }
 
 .articol-imagine img {
-    width: 200px;
-    height: auto;
+    width: 400px;
+    height: 300px;
     border-radius: 4px;
     
 }

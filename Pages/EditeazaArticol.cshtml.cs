@@ -8,12 +8,18 @@ namespace Wikipedia.Pages.Shared
     public class EditeazaArticolModel : PageModel
     {
         private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
         [BindProperty]
         public Articol Articol { get; set; } = new Articol();
-        public EditeazaArticolModel(AppDbContext context)
+
+        [BindProperty]
+        public IFormFile ImagineNoua { get; set; }
+
+        public EditeazaArticolModel(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult OnGet(int id)
@@ -29,7 +35,6 @@ namespace Wikipedia.Pages.Shared
         }
         public IActionResult OnPost()
         {
-            
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -53,9 +58,24 @@ namespace Wikipedia.Pages.Shared
             articolExistent.DataPublicare = Articol.DataPublicare;
             articolExistent.Domenii = Articol.Domenii;
 
-            _context.SaveChanges();
+            // Verifică dacă s-a selectat o imagine nouă
+            if (ImagineNoua != null && ImagineNoua.Length > 0)
+            {
+                var fileName = Path.GetFileName(ImagineNoua.FileName);
+                var filePath = Path.Combine(_env.WebRootPath, "imagine", fileName);
 
-            return RedirectToPage("Index");
+                // Salvează fișierul în wwwroot/imagine
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    ImagineNoua.CopyTo(stream);
+                }
+
+                articolExistent.Imagine = fileName;
+            }
+
+            _context.SaveChanges();
+            return RedirectToPage("/Index");
         }
+
     }
 }

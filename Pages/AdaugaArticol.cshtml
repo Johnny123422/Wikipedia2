@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "AdaugaArticol";
 }
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div>
         <label>Titlu </label>
         <input type="text" asp-for="@Model.articol.Titlu" />
@@ -16,6 +16,9 @@
         <label>Continut </label>
         <input type="text" asp-for="@Model.articol.Continut" />
     </div>
+
+    <label>Imagine:</label>
+    <input type="file" name="ImagineFisier" />
     <div>
         <label>Domeniu </label>
         <select asp-for="articol.DomeniuId" asp-items="Model.DomeniiSelectList">
@@ -23,6 +26,7 @@
         </select>
         
     </div>
+
     <div>
         <label>Nu poate fi editat</label>
         <input type="checkbox" asp-for="@Model.articol.EsteProtejat" />
