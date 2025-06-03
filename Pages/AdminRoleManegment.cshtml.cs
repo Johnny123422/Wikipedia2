@@ -11,6 +11,7 @@ namespace Wikipedia.Pages
     public class AdminRoleManegmentModel : PageModel
     {
         private readonly UserManager<AppUser> _userManager;
+        
 
         public AdminRoleManegmentModel(UserManager<AppUser> userManager)
         {
@@ -23,19 +24,21 @@ namespace Wikipedia.Pages
             Useri = _userManager.Users.ToList();
         }
         
-        public async Task<IActionResult> OnPostAddRolAsync(string userId, string rol)
+        public async Task<IActionResult> OnPostAddRolAsync(string userId, string rolNou)
         {
             var utilizator = await _userManager.FindByIdAsync(userId);
-            
-            if(utilizator != null && !await _userManager.IsInRoleAsync(utilizator, rol))
-            {
-                await _userManager.AddToRoleAsync(utilizator, rol);
-            }
 
+            if(utilizator != null && !await _userManager.IsInRoleAsync(utilizator, "admin"))
+            {
+                var roluri = await _userManager.GetRolesAsync(utilizator);
+                await _userManager.RemoveFromRolesAsync(utilizator, roluri);
+                await _userManager.AddToRoleAsync(utilizator, rolNou);
+            }
+            
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostRemoveRoleAsync(string userId, string rol)
+        /*public async Task<IActionResult> OnPostRemoveRoleAsync(string userId, string rol)
         {
             var utilizator = await _userManager.FindByIdAsync(userId);
 
@@ -45,6 +48,6 @@ namespace Wikipedia.Pages
             }
 
             return RedirectToPage();
-        }
+        }*/
     }
 }
