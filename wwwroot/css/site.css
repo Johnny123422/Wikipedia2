@@ -116,6 +116,10 @@ h2 {
     margin-right: 10px;
 }
 
+.articol-imagine {
+    position: relative;
+    display: inline-block;
+}
 .articol-imagine img {
     width: 400px;
     height: 300px;
@@ -132,4 +136,37 @@ h2 {
 
 .articol-informatii {
     flex:1;
+}
+
+.Data_articol {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    text-align: left;
+    color: white;
+}
+
+
+.grid-pagina {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "Articol Articol";
+}
+
+    .grid-pagina > section {
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+.adauga-articol {
+    margin-top: 40px;
+    text-align: center;
 }

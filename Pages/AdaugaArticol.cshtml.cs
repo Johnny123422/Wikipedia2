@@ -27,6 +27,7 @@ namespace Wikipedia.Pages
                     Text = d.Nume
                 }).ToList();
         }
+        
         public async Task<IActionResult> OnPostAsync(IFormFile ImagineFisier)
         {
             if (!ModelState.IsValid)
@@ -52,7 +53,7 @@ namespace Wikipedia.Pages
                     await ImagineFisier.CopyToAsync(stream);
                 }
             }
-
+            articol.DataPublicare = DateTime.Now;
             _context.Articole.Add(articol);
             await _context.SaveChangesAsync();
             return RedirectToPage("/Index");
