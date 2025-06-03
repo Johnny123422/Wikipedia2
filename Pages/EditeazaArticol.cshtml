@@ -9,26 +9,26 @@
 <form method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Articol.Id" />
 
-    <div>
+    <div class="mb-3">
         <input asp-for="@Model.Articol.Titlu" />
     </div>
 
-    <div>
+    <div class="mb-3">
         <input asp-for="@Model.Articol.Continut" />
     </div>
 
-    <div>
+    <div class="mb-3">
         <input asp-for="@Model.Articol.Autor" />
     </div>
 
-    <label>Imagine:</label>
-    <input type="file" name="ImagineNoua" />
+    <label class="form-label">Imagine:</label>
+    <input type="file" class="form-control" name="ImagineNoua" />
     
-    <button type="submit" class="w-100 btn btn-lg btn-primary">Salveaza modificarile</button>
+    <button type="submit" class="w-20 btn btn-lg btn-primary">Submit</button>
 </form>
-<div>
-    <input asp-for="Articol.EsteProtejat" type="checkbox" disabled />
-    <label asp-for="Articol.EsteProtejat">Este protejat</label>
+<div class="form-check">
+    <input class="form-check-input" asp-for="Articol.EsteProtejat" type="checkbox" disabled />
+    <label class="form-check-label" asp-for="Articol.EsteProtejat">Este protejat</label>
 </div>
 
-<input type="hidden" asp-for="Articol.EsteProtejat" /> <!-- ca să trimiți valoarea în POST -->
+<input type="hidden" asp-for="Articol.EsteProtejat" /> 

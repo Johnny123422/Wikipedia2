@@ -4,33 +4,35 @@
     ViewData["Title"] = "AdaugaArticol";
 }
 <form method="post" enctype="multipart/form-data">
-    <div>
-        <label>Titlu </label>
-        <input type="text" asp-for="@Model.articol.Titlu" />
+    <div class="mb-3">
+        <label class="form-label">Titlu </label>
+        <input class="form-control" type="text" asp-for="@Model.articol.Titlu" />
+    </div class="mb-3">
+    <div class="mb-3">
+        <label class="form-label"> Autor </label>
+        <input class="form-control" type="text" asp-for="@Model.articol.Autor" />
     </div>
-    <div>
-        <label> Autor </label>
-        <input type="text" asp-for="@Model.articol.Autor" />
-    </div>
-    <div>
-        <label>Continut </label>
-        <input type="text" asp-for="@Model.articol.Continut" />
+    <div class="mb-3">
+        <label class="form-label">Continut </label>
+        <input class="form-control" type="text" asp-for="@Model.articol.Continut" />
     </div>
 
-    <label>Imagine:</label>
-    <input type="file" name="ImagineFisier" />
-    <div>
-        <label>Domeniu </label>
-        <select asp-for="articol.DomeniuId" asp-items="Model.DomeniiSelectList">
-            <option value="">Selecteaza optiunea</option>
-        </select>
+    <label class="form-label">Imagine:</label>
+    <input type="file" class="form-control" name="ImagineFisier" />
+    <div class="mb-3">
+        <label class="form-label">Domeniu </label>
+
+        <select asp-for="articol.DomeniuId" asp-items="Model.DomeniiSelectList" class="form-select">
+        <option value="">Selectează opțiunea</option>
+    </select>
         
     </div>
 
-    <div>
-        <label>Nu poate fi editat</label>
-        <input type="checkbox" asp-for="@Model.articol.EsteProtejat" />
+    <div class="form-check">
+       
+        <input class="form-check-input " type="checkbox" asp-for="@Model.articol.EsteProtejat" />
+         <label class="form-check-label">Nu poate fi editat</label>
     </div>
-    <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
+    <button type="submit" class="w-20 btn btn-lg btn-primary">Submit</button>
 </form>
 
